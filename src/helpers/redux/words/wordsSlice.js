@@ -19,7 +19,7 @@ const initialState = {
     perPage: 7,
   },
   categories: [],
-  stats: null,
+  stats: { totalCount: 0 },
   tasks: [],
   wordToPost: {
     en: "",
@@ -72,7 +72,9 @@ const wordsSlice = createSlice({
       })
       .addCase(CreateWordThunk.fulfilled, (state, action) => {})
       .addCase(AddWordThunk.fulfilled, (state, action) => {})
-      .addCase(GetStatsThunk.fulfilled, (state, action) => {})
+      .addCase(GetStatsThunk.fulfilled, (state, action) => {
+        state.stats = action.payload;
+      })
       .addCase(PostAnswerThunk.fulfilled, (state, action) => {})
       .addCase(EditWordThunk.fulfilled, (state, action) => {})
       .addCase(DeleteWordThunk.fulfilled, (state, action) => {});

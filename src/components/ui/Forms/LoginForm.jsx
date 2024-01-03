@@ -49,7 +49,7 @@ const SignUpForm = () => {
           <ErrorMessage name="password" />
         </div>
         <button type="submit">Submit</button>
-        <Link to="/login">Login</Link>
+        <Link to="/signup">Sign Up</Link>
       </Form>
     </Formik>
   );
