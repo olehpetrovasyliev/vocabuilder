@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-const Logo: FC = () => {
+const Logo = () => {
   return <div>LOGO</div>;
 };
 

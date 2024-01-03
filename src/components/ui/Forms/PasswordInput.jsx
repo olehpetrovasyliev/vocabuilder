@@ -2,7 +2,7 @@ import { Field } from "formik";
 import { useState, FC } from "react";
 
 const PasswordInput = () => {
-  const [isShown, setIsShown] = useState < boolean > false;
+  const [isShown, setIsShown] = useState(false);
   return (
     <>
       <Field
@@ -10,7 +10,9 @@ const PasswordInput = () => {
         id="password"
         name="password"
       />
-      <button onClick={() => setIsShown((prew) => !prew)}>toggle</button>
+      <button type="button" onClick={() => setIsShown((prew) => !prew)}>
+        toggle
+      </button>
     </>
   );
 };

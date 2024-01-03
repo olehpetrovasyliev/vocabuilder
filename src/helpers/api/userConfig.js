@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios from "axios";
 
 const instanceConfig = {
   baseURL: "https://vocab-builder-backend.p.goit.global/api/",

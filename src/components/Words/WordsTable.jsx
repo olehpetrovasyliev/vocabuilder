@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
-import { useTable, Column } from "react-table";
-import { Word } from "../../types/types";
+import { useTable, } from "react-table";
 import { useSelector } from "react-redux";
 import { selectWords } from "../../helpers/redux/words/wordsSelectors";
 import AddWordBtn from "../ui/Buttons/AddWordBtn";

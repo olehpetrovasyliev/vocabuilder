@@ -1,15 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../api/userConfig";
-import {
-  Categories,
-  Stats,
-  TaskToPost,
-  TasksList,
-  WordInProgress,
-  WordDeletedMessage,
-  Word,
-  WordsData,
-} from "../../../types/types";
 
 export const CreateWordThunk = createAsyncThunk(
   "words/create",

@@ -1,10 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import LogInPage from "./pages/LogIn/Login";
+import SignUpPage from "./pages/SignUp/Signup";
+import Header from "./components/Header/header";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -28,8 +31,11 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Header />
+      <SignUpPage />
+      <LogInPage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

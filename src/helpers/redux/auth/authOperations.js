@@ -7,7 +7,7 @@ export const signUpThunk = createAsyncThunk(
     try {
       const { data } = await instance.post("users/signup", credentials);
       setToken(data.token);
-      return data ;
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -18,7 +18,7 @@ export const logInThunk = createAsyncThunk(
   "auth/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post("users/login", credentials);
+      const { data } = await instance.post("users/signin", credentials);
       setToken(data.token);
       return data;
     } catch (error) {
@@ -32,7 +32,7 @@ export const getUserInfoThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.get("users/current");
-      return data ;
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

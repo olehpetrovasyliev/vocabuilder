@@ -1,10 +1,9 @@
-import { createSlice, isAnyOf, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   signUpThunk,
   logInThunk,
   getUserInfoThunk,
   signOutThunk,
-  returnedCredentials,
 } from "./authOperations";
 
 const initialState = {
