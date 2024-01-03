@@ -1,7 +1,7 @@
 import React from "react";
 
-const Recommend = () => {
+const Training = () => {
   return <div></div>;
 };
 
-export default Recommend;
+export default Training;

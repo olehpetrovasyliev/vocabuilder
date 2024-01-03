@@ -8,6 +8,6 @@ export const selectWordToPost = (state) => state.words.wordToPost;
 export const selectCurrentWord = (state) => state.words.currentWord;
 export const selectCurrentWordProgress = (state) =>
   state.words.currentWord.progress;
-
+export const selectCurrentCategory = (state) => state.words.currentCategory;
 export const selectAreWordsLoading = (state) => state.words.loading;
 export const selectWordsError = (state) => state.words.error;

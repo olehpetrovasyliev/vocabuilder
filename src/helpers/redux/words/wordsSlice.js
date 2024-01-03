@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  AddWordThunk,
+  CreateWordThunk,
+  DeleteWordThunk,
+  EditWordThunk,
   GetAllWordsThunk,
   GetCategoriesThunk,
   GetOwnWordsThunk,
+  GetStatsThunk,
+  PostAnswerThunk,
 } from "./wordsOperations";
 
 const initialState = {
@@ -29,6 +35,7 @@ const initialState = {
     owner: "",
     progress: 0,
   },
+  currentCategory: "",
   error: null,
   loading: false,
 };
@@ -36,7 +43,9 @@ const initialState = {
 const wordsSlice = createSlice({
   name: "words",
   initialState,
-  reducers: {},
+  reducers: {
+    setCategory: (state, action) => (state.currentCategory = action.payload),
+  },
   extraReducers: (builder) => {
     builder
       .addCase(GetCategoriesThunk.fulfilled, (state, action) => {
@@ -55,11 +64,16 @@ const wordsSlice = createSlice({
         state.wordsData.results = action.payload.results;
         state.wordsData.page = action.payload.page;
         state.wordsData.totalPages = action.payload.totalPages;
-
         state.error = null;
         state.loading = false;
-      });
+      })
+      .addCase(CreateWordThunk.fulfilled, (state, action) => {})
+      .addCase(AddWordThunk.fulfilled, (state, action) => {})
+      .addCase(GetStatsThunk.fulfilled, (state, action) => {})
+      .addCase(PostAnswerThunk.fulfilled, (state, action) => {})
+      .addCase(EditWordThunk.fulfilled, (state, action) => {})
+      .addCase(DeleteWordThunk.fulfilled, (state, action) => {});
   },
 });
-
+export const { setCategory } = wordsSlice.actions;
 export const wordsReducer = wordsSlice.reducer;
