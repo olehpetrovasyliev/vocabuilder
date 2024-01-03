@@ -1,11 +1,23 @@
-import React, { useMemo } from "react";
-import { useTable, } from "react-table";
-import { useSelector } from "react-redux";
-import { selectWords } from "../../helpers/redux/words/wordsSelectors";
+import React, { useMemo, useEffect } from "react";
+import { useTable } from "react-table";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCurrentCategory,
+  selectPage,
+  selectWords,
+} from "../../helpers/redux/words/wordsSelectors";
 import AddWordBtn from "../ui/Buttons/AddWordBtn";
+import { GetAllWordsThunk } from "../../helpers/redux/words/wordsOperations";
 
 const WordsTable = () => {
+  const dispatch = useDispatch();
   const words = useSelector(selectWords);
+  const page = useSelector(selectPage);
+  const category = useSelector(selectCurrentCategory);
+
+  useEffect(() => {
+    dispatch(GetAllWordsThunk({ page, category }));
+  }, [page, category]);
   const data = useMemo(
     () =>
       words.map((word) => ({
