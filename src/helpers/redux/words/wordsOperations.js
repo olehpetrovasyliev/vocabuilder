@@ -51,9 +51,9 @@ export const GetCategoriesThunk = createAsyncThunk(
 
 export const GetAllWordsThunk = createAsyncThunk(
   "words/getAll",
-  async (page, { rejectWithValue }) => {
+  async (params, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get(`words/all?limit=7&page=${page}`);
+      const { data } = await instance.get("words/all?limit=7", { params });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

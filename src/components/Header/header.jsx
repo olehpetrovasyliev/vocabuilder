@@ -5,18 +5,21 @@ import {
   selectUser,
 } from "../../helpers/redux/auth/authSelectors";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
 
 const Header = () => {
   const user = useSelector(selectUser);
   return (
-    <header>
-      <div>
-        <Logo />
-        {user && <NavBar />}
-      </div>
-    </header>
+    <>
+      <header>
+        <div>
+          <Logo />
+          {user && <NavBar />}
+        </div>
+      </header>
+      <Outlet />
+    </>
   );
 };
 

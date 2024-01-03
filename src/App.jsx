@@ -19,12 +19,47 @@ function App() {
   return (
     <Routes>
       <Route path="/" Component={Header}>
-        <Route index />
-        <PublicRoute path="/login" Component={LogInPage} />
-        <PublicRoute path="/signup" Component={SignUpPage} />
-        <PrivateRoute path="/dictionary" Component={Dictionary} />
-        <PrivateRoute path="/recommend" Component={Recommend} />
-        <PrivateRoute path="/training" Component={Training} />
+        {/* <Route index /> */}
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LogInPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute>
+              <SignUpPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/dictionary"
+          element={
+            <PrivateRoute>
+              <Dictionary />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/recommend"
+          element={
+            <PrivateRoute>
+              <Recommend />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/training"
+          element={
+            <PrivateRoute>
+              <Training />
+            </PrivateRoute>
+          }
+        />
       </Route>
     </Routes>
   );
