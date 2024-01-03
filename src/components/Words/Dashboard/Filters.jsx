@@ -16,8 +16,14 @@ const Filters = () => {
   useEffect(() => {
     dispatch(GetCategoriesThunk());
   }, [dispatch]);
-  const handleChangeCategory = (value) => {
-    dispatch(setCategory);
+
+  const transformedCategories = categories.map((category) => ({
+    label: category,
+    value: category,
+  }));
+
+  const handleChange = (value) => {
+    dispatch(setCategory(value));
   };
   return (
     <div>
@@ -27,7 +33,7 @@ const Filters = () => {
           <use></use>
         </svg>
       </label>
-      <Select options={categories} />
+      <Select options={transformedCategories} onChange={handleChange} />
       {currentCategory === "verb" && (
         <>
           <input type="radio" name="isIrregular" />

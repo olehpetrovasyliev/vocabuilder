@@ -42,7 +42,7 @@ export const GetCategoriesThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.get("words/categories");
-      return da;
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

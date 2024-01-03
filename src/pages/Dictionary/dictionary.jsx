@@ -1,7 +1,12 @@
 import React from "react";
+import Dashboard from "../../components/Words/Dashboard/Dashboard";
 
 const Dictionary = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Dashboard />
+    </div>
+  );
 };
 
 export default Dictionary;

@@ -44,7 +44,10 @@ const wordsSlice = createSlice({
   name: "words",
   initialState,
   reducers: {
-    setCategory: (state, action) => (state.currentCategory = action.payload),
+    setCategory: (state, action) => ({
+      ...state,
+      currentCategory: action.payload.value,
+    }),
   },
   extraReducers: (builder) => {
     builder
