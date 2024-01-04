@@ -32,3 +32,11 @@ const modalSlice = createSlice({
 });
 
 export const modalReducer = modalSlice.reducer;
+export const {
+  openModalAddWord,
+  openModalEditWord,
+  openModalWellDone,
+  closeModalAddWord,
+  closeModalEditWord,
+  closeModalWellDone,
+} = modalSlice.actions;

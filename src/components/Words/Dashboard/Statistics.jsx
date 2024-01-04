@@ -17,7 +17,7 @@ const Statistics = () => {
   return (
     <div>
       <p>ToStudy:{stats.totalCount}</p>
-      <AddWordBtn />
+      <AddWordBtn content={<span>Add word</span>} />
       {location.pathname === "/dictionary" && <Link to="/training"></Link>}
     </div>
   );

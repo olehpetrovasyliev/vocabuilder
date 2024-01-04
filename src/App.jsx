@@ -12,56 +12,65 @@ import { PrivateRoute } from "./hoc/PrivateRoute";
 import Dictionary from "./pages/Dictionary/dictionary";
 import Recommend from "./pages/Recommend/Recommend";
 import Training from "./pages/Training/Training";
+import { selectIsModalAddOpen } from "./helpers/redux/modal/modalSelectors";
+import { createPortal } from "react-dom";
+import AddWordModal from "./components/ui/Modals/AddWordModal";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const isModalAddOpen = useSelector(selectIsModalAddOpen);
 
   return (
-    <Routes>
-      <Route path="/" Component={Header}>
-        {/* <Route index /> */}
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <LogInPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <PublicRoute>
-              <SignUpPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/dictionary"
-          element={
-            <PrivateRoute>
-              <Dictionary />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/recommend"
-          element={
-            <PrivateRoute>
-              <Recommend />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/training"
-          element={
-            <PrivateRoute>
-              <Training />
-            </PrivateRoute>
-          }
-        />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" Component={Header}>
+          {/* <Route index /> */}
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LogInPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute>
+                <SignUpPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/dictionary"
+            index
+            element={
+              <PrivateRoute>
+                <Dictionary />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/recommend"
+            element={
+              <PrivateRoute>
+                <Recommend />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/training"
+            element={
+              <PrivateRoute>
+                <Training />
+              </PrivateRoute>
+            }
+          />
+        </Route>
+      </Routes>
+
+      {isModalAddOpen && createPortal(<AddWordModal />, document.body)}
+    </>
   );
 }
 

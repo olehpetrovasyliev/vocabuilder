@@ -30,8 +30,8 @@ const SignUpForm = () => {
   const handleSubmit = (values, actions) => {
     console.log("Form values submitted:", values);
     dispatch(signUpThunk(values));
-    navigate("/dictionary");
     actions.setSubmitting(false);
+    navigate("/dictionary");
   };
 
   return (

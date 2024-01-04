@@ -53,7 +53,7 @@ export const GetAllWordsThunk = createAsyncThunk(
   "words/getAll",
   async (params, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("words/all?limit=7", { params });
+      const { data } = await instance.get("words/all", { params });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -63,9 +63,9 @@ export const GetAllWordsThunk = createAsyncThunk(
 
 export const GetOwnWordsThunk = createAsyncThunk(
   "words/getOwn",
-  async (_, { rejectWithValue }) => {
+  async (params, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get("words/own");
+      const { data } = await instance.get("words/own", { params });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

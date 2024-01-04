@@ -1,31 +1,30 @@
 import React, { useMemo, useEffect } from "react";
 import { useTable } from "react-table";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCurrentCategory,
-  selectPage,
-  selectWords,
-} from "../../helpers/redux/words/wordsSelectors";
+import { selectWords } from "../../helpers/redux/words/wordsSelectors";
 import AddWordBtn from "../ui/Buttons/AddWordBtn";
-import { GetAllWordsThunk } from "../../helpers/redux/words/wordsOperations";
+import ActionsBtn from "../ui/Buttons/ActionsBtn";
+import { useSelector } from "react-redux";
 
 const WordsTable = () => {
-  const dispatch = useDispatch();
   const words = useSelector(selectWords);
-  const page = useSelector(selectPage);
-  const category = useSelector(selectCurrentCategory);
-
-  useEffect(() => {
-    dispatch(GetAllWordsThunk({ page, category }));
-  }, [page, category]);
   const data = useMemo(
     () =>
-      words.map((word) => ({
-        en: word.en,
-        ua: word.ua,
-        category: word.category,
-        addWord: <AddWordBtn />,
-      })),
+      words.map((word) =>
+        location.pathname === "/dictionary"
+          ? {
+              en: word.en,
+              ua: word.ua,
+              category: word.category,
+              progress: word.progress,
+              button: <ActionsBtn />,
+            }
+          : {
+              en: word.en,
+              ua: word.ua,
+              category: word.category,
+              button: <AddWordBtn content={<span>Add to dictionary</span>} />,
+            }
+      ),
     [words]
   );
 
@@ -45,7 +44,7 @@ const WordsTable = () => {
       },
       {
         Header: "",
-        accessor: "addWord",
+        accessor: "button",
       },
     ],
     []

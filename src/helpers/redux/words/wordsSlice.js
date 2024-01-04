@@ -21,11 +21,10 @@ const initialState = {
   categories: [],
   stats: { totalCount: 0 },
   tasks: [],
-  wordToPost: {
+  wordToAdd: {
     en: "",
     ua: "",
     category: "",
-    _id: "",
   },
   currentWord: {
     en: "",
@@ -47,6 +46,7 @@ const wordsSlice = createSlice({
     setCategory: (state, action) => ({
       ...state,
       currentCategory: action.payload.value,
+      wordsData: { ...state.wordsData, page: 1 },
     }),
   },
   extraReducers: (builder) => {
