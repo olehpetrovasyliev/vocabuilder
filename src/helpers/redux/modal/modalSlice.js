@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isModalAddWordOpen: false,
+  isModalAddOpen: false,
   isModalEditWordOpen: false,
   isModalWellDoneOpen: false,
 };
@@ -11,7 +11,7 @@ const modalSlice = createSlice({
   initialState,
   reducers: {
     openModalAddWord: (state, action) => {
-      state.isModalAddWordOpen = true;
+      state.isModalAddOpen = true;
     },
     openModalEditWord: (state, action) => {
       state.isModalEditWordOpen = true;
@@ -20,7 +20,7 @@ const modalSlice = createSlice({
       state.isModalWellDoneOpen = true;
     },
     closeModalAddWord: (state, action) => {
-      state.isModalAddWordOpen = false;
+      state.isModalAddOpen = false;
     },
     closeModalEditWord: (state, action) => {
       state.isModalEditWordOpen = false;

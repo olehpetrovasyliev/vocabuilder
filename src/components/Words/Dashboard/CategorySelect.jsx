@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GetCategoriesThunk } from "../../../helpers/redux/words/wordsOperations";
-import { setCategory } from "../../../helpers/redux/words/wordsSlice";
+import Select from "react-select";
 import {
   selectCategories,
   selectCurrentCategory,
 } from "../../../helpers/redux/words/wordsSelectors";
-import Select from "react-select";
-import CategorySelect from "./CategorySelect";
+import { GetCategoriesThunk } from "../../../helpers/redux/words/wordsOperations";
+import { setCategory } from "../../../helpers/redux/words/wordsSlice";
 
-const Filters = () => {
+const CategorySelect = () => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
   const currentCategory = useSelector(selectCurrentCategory);
@@ -27,16 +26,17 @@ const Filters = () => {
     dispatch(setCategory(value));
   };
   return (
-    <div>
-      <label>
-        <input type="text" />
-        <svg>
-          <use></use>
-        </svg>
-      </label>
-      <CategorySelect />
-    </div>
+    <>
+      <Select options={transformedCategories} onChange={handleChange} />
+      {currentCategory === "verb" && (
+        <>
+          <input type="radio" name="isIrregular" />
+          <input type="radio" name="isIrregular" />
+        </>
+      )}
+      Field
+    </>
   );
 };
 
-export default Filters;
+export default CategorySelect;

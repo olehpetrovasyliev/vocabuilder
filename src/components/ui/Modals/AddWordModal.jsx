@@ -1,6 +1,8 @@
-import { Field, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 import * as yup from "yup";
+import Modal from "./ModalComponent/ModalComponent";
+import CategorySelect from "../../Words/Dashboard/CategorySelect";
 
 const englishPattern = /\b[A-Za-z'-]+(?:\s+[A-Za-z'-]+)*\b/;
 const ukrainianPattern = /^(?![A-Za-z])[А-ЯІЄЇҐґа-яієїʼ\s]+$/u;
@@ -18,24 +20,24 @@ const AddWordModal = () => {
     console.log(values);
   };
   return (
-    <div>
-      <div className="modal">
-        <Formik>
-          <Form
-            validationSchema={validationSchema}
-            initialValues={initialValues}
-            onSubmit={handleSubmit}
-          >
-            <label htmlFor="en">
-              <Field type="text" id="en" name="en" />
-            </label>
-            <label htmlFor="ua">
-              <Field type="text" id="ua" name="ua" />
-            </label>
-          </Form>
-        </Formik>
-      </div>
-    </div>
+    <Modal>
+      <Formik
+        validationSchema={validationSchema}
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+      >
+        <Form>
+          <CategorySelect />
+
+          <label htmlFor="en">
+            <Field type="text" id="en" name="en" />
+          </label>
+          <label htmlFor="ua">
+            <Field type="text" id="ua" name="ua" />
+          </label>
+        </Form>
+      </Formik>
+    </Modal>
   );
 };
 

@@ -48,6 +48,10 @@ const wordsSlice = createSlice({
       currentCategory: action.payload.value,
       wordsData: { ...state.wordsData, page: 1 },
     }),
+    setCurrentWord: (state, action) => ({
+      ...state,
+      currentWord: acton.payload.currentWord,
+    }),
   },
   extraReducers: (builder) => {
     builder

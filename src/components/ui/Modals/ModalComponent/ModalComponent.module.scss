@@ -1,0 +1,15 @@
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(18, 20, 23, 0.2);
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  background: #85aa9f;
+  border-radius: 30px;
+  padding: 64px;
+}

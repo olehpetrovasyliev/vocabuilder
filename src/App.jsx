@@ -12,13 +12,21 @@ import { PrivateRoute } from "./hoc/PrivateRoute";
 import Dictionary from "./pages/Dictionary/dictionary";
 import Recommend from "./pages/Recommend/Recommend";
 import Training from "./pages/Training/Training";
-import { selectIsModalAddOpen } from "./helpers/redux/modal/modalSelectors";
+import {
+  selectIsModalAddOpen,
+  selectIsModalEditOpen,
+  selectIsModalWellDoneOpen,
+} from "./helpers/redux/modal/modalSelectors";
 import { createPortal } from "react-dom";
 import AddWordModal from "./components/ui/Modals/AddWordModal";
 import { useSelector } from "react-redux";
+import EditWordModal from "./components/ui/Modals/EditWordModal";
+import WellDoneModal from "./components/ui/Modals/WellDoneModal";
 
 function App() {
   const isModalAddOpen = useSelector(selectIsModalAddOpen);
+  const isModalEditOpen = useSelector(selectIsModalEditOpen);
+  const isModalWellDoneOpen = useSelector(selectIsModalWellDoneOpen);
 
   return (
     <>
@@ -43,7 +51,6 @@ function App() {
           />
           <Route
             path="/dictionary"
-            index
             element={
               <PrivateRoute>
                 <Dictionary />
@@ -70,6 +77,8 @@ function App() {
       </Routes>
 
       {isModalAddOpen && createPortal(<AddWordModal />, document.body)}
+      {isModalEditOpen && createPortal(<EditWordModal />, document.body)}
+      {isModalWellDoneOpen && createPortal(<WellDoneModal />, document.body)}
     </>
   );
 }
