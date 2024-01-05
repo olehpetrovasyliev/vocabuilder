@@ -21,14 +21,18 @@ const AddWordModal = () => {
   };
   return (
     <Modal>
+      <h2>Add word</h2>
+      <p>
+        Adding a new word to the dictionary is an important step in enriching
+        the language base and expanding the vocabulary.
+      </p>
+      <CategorySelect />
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={handleSubmit}
       >
         <Form>
-          <CategorySelect />
-
           <label htmlFor="en">
             <Field type="text" id="en" name="en" />
           </label>
