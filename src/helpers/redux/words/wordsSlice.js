@@ -74,7 +74,9 @@ const wordsSlice = createSlice({
         state.error = null;
         state.loading = false;
       })
-      .addCase(CreateWordThunk.fulfilled, (state, action) => {})
+      .addCase(CreateWordThunk.fulfilled, (state, action) => {
+        state.category = "";
+      })
       .addCase(AddWordThunk.fulfilled, (state, action) => {})
       .addCase(GetStatsThunk.fulfilled, (state, action) => {
         state.stats = action.payload;

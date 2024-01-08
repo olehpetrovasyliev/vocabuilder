@@ -3,6 +3,14 @@ import React from "react";
 import * as yup from "yup";
 import Modal from "./ModalComponent/ModalComponent";
 import CategorySelect from "../../Words/Dashboard/CategorySelect";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModalAddWord } from "../../../helpers/redux/modal/modalSlice";
+import { selectCurrentCategory } from "../../../helpers/redux/words/wordsSelectors";
+import { setCategory } from "../../../helpers/redux/words/wordsSlice";
+import {
+  AddWordThunk,
+  CreateWordThunk,
+} from "../../../helpers/redux/words/wordsOperations";
 
 const englishPattern = /\b[A-Za-z'-]+(?:\s+[A-Za-z'-]+)*\b/;
 const ukrainianPattern = /^(?![A-Za-z])[А-ЯІЄЇҐґа-яієїʼ\s]+$/u;
@@ -15,9 +23,18 @@ const initialValues = {
   en: "",
   ua: "",
 };
+
 const AddWordModal = () => {
+  const dispatch = useDispatch();
+  const category = useSelector(selectCurrentCategory);
+  const handleClose = () => {
+    dispatch(closeModalAddWord());
+  };
   const handleSubmit = (values) => {
-    console.log(values);
+    category === "verb"
+      ? console.log({ ...values, category: category, isIrregular: true })
+      : dispatch(CreateWordThunk({ ...values, category: category }));
+    dispatch(closeModalAddWord());
   };
   return (
     <Modal>
@@ -39,6 +56,10 @@ const AddWordModal = () => {
           <label htmlFor="ua">
             <Field type="text" id="ua" name="ua" />
           </label>
+          <button type="submit">Add word</button>
+          <button type="button" onClick={handleClose}>
+            Cancel
+          </button>
         </Form>
       </Formik>
     </Modal>

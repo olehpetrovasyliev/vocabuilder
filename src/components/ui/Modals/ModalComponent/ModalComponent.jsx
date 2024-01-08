@@ -14,12 +14,17 @@ const Modal = ({ children }) => {
       handleClose();
     }
   };
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") {
+      handleClose();
+    }
+  };
 
   useEffect(() => {
-    document.addEventListener("keydown", handleClose);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener("keydown", handleClose);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
   return (

@@ -6,7 +6,6 @@ import {
   selectCategories,
   selectCurrentCategory,
 } from "../../../helpers/redux/words/wordsSelectors";
-import Select from "react-select";
 import CategorySelect from "./CategorySelect";
 
 const Filters = () => {
@@ -17,11 +16,6 @@ const Filters = () => {
   useEffect(() => {
     dispatch(GetCategoriesThunk());
   }, [dispatch]);
-
-  const transformedCategories = categories.map((category) => ({
-    label: category,
-    value: category,
-  }));
 
   const handleChange = (value) => {
     dispatch(setCategory(value));

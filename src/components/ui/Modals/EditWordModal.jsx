@@ -39,6 +39,8 @@ const EditWordModal = () => {
             <Field type="text" id="ua" name="ua" />
             <span>hello world</span>
           </label>
+          <button></button>
+          <button></button>
         </Form>
       </Formik>
     </Modal>
